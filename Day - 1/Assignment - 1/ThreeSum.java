@@ -13,7 +13,8 @@ public class ThreeSum{
                 if(arr[i] + arr[startElement] + arr[endElement] == 0){
                     System.out.println("Triplet is " + arr[i] + "," + arr[startElement] + "," + arr[endElement]);
                     count++;
-                    break;
+                    startElement++;
+                    endElement--;
                 }else if(arr[i] + arr[startElement] + arr[endElement] < 0){
                     startElement++;
                 }else{
@@ -25,7 +26,7 @@ public class ThreeSum{
     }
 
     public static void main(String[] args) {
-        int [] arr = {1,-1,0,2,-2};
+        int [] arr = {1,3,4,0,-1,-3,-4};
         System.out.println(count(arr));
     }
 }
