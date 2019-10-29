@@ -9,7 +9,7 @@ public class Solution {
         this.size = 0;
 	}
 	
-	public static String josephus(final int a, final int b) {
+	public static String Josephus(final int a, final int b) {
 		Solution sol = new Solution();
         sol.generateOrder(a - 1);
 		String removed = sol.remove(b);
