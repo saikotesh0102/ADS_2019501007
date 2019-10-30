@@ -12,10 +12,9 @@ public class Solution{
 			if((str.charAt(i) == '}') || (str.charAt(i) == ')') || (str.charAt(i) == ']')){
 				if(st.isEmpty() == false){
 					st.pop();
-				}
-				
-				if(st.isEmpty()){
-					return "NO";
+					if(st.isEmpty()){
+						return "NO";
+					}
 				}
 			}
 		}
