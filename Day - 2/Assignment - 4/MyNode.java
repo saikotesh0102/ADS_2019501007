@@ -4,5 +4,6 @@ public class MyNode {
 
     public MyNode (final String data) {
         this.data = data;
+        this.next = null;
     }
 }

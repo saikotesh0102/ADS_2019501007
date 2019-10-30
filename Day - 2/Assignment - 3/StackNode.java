@@ -5,5 +5,6 @@ public class StackNode {
 
     public StackNode(final String data) {
         this.data = data;
+        this.next = null;
     }
 }
