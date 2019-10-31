@@ -15,11 +15,10 @@ import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 
 public class TestJUnit {
-    @Test
+  @Test
   public void testCase1() {
     int[] arr = {787, 879, 180, 316, 904, 612, 778, 936, 422, 859};
     int[] res = {180, 316, 422, 612, 778, 787, 859, 879, 904, 936};
-     
     Assert.assertArrayEquals( res, Solution.quickSort(arr));
   }
   @Test
@@ -575,7 +574,6 @@ public class TestJUnit {
      
     Assert.assertArrayEquals( res, Solution.quickSort(arr));
   }
-
 
 }
 
