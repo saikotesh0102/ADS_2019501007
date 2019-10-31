@@ -49,7 +49,7 @@ public class Solution{
 	public static int[] RandomizeArray(int[] arr){
 		Random rand = new Random(); 		
  
-		for (int i=0; i<arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 		    int randomPosition = rand.nextInt(arr.length);
 		    int temp = arr[i];
 		    arr[i] = arr[randomPosition];
