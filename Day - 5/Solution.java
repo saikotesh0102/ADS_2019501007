@@ -1,14 +1,14 @@
-
 import java.util.*;
 import java.io.*;
-class Student implements Comparable<Student>{
+
+public class Student implements Comparable<Student>{
 	String name;
-	String dob;
-	int sub1;
-	int sub2;
-	int sub3;
-	int marks;
-	String category;
+	private String dob;
+	private int sub1;
+	private int sub2;
+	private int sub3;
+	private int marks;
+	private String category;
 	boolean flag;
 	Student(String name, String dob, int sub1, int sub2, int sub3, int marks, String category){
 		//your code goes here.

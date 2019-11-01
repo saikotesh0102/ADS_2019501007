@@ -1,6 +1,6 @@
 public class Solution {
-    private MyNode head;
-    private MyNode tail;
+    private Node head;
+    private Node tail;
 	private int size;
 	
     public Solution() {
@@ -24,14 +24,14 @@ public class Solution {
 
     public void insert(final String data) {
 
-        MyNode firstNode = new MyNode(data);
+        Node firstNode = new Node(data);
         size++;
         if (head == null) {
             head = firstNode;
             firstNode.next = head;
             tail = firstNode;
         } else {
-            MyNode temp = tail;
+            Node temp = tail;
             firstNode.next = head;
             head = firstNode;
             temp.next = head;
@@ -40,8 +40,8 @@ public class Solution {
 	
     public String remove(final int pos) {
 		int index = 0;
-        MyNode temp = head;
-        MyNode prev = head;
+        Node temp = head;
+        Node prev = head;
         String removed = "";
         while (temp.next != temp) {
             int count = 1;
