@@ -3,7 +3,7 @@ An organisation is required to fill the vacancies in their organisation. They co
 Input format:
 first line contains an int(N) represents no.of students qualified
 Second line contains an int represent no.of vacancies
-Thirst line contains an int represent no.of unreserved category vacancies
+Third line contains an int represent no.of unreserved category vacancies
 Fourth line contains an int represents no.of BC category vacancies
 Fifth line contains an int represents no.of SC category vacancies
 Sixth line contains an int represents no.of ST category vacancies
