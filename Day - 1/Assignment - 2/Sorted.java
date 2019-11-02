@@ -1,4 +1,16 @@
+/**
+ * @author SaiKotesh0102
+ */
+
 public class Sorted{
+    /**
+     * Metod to add to sorted arrays into new array in sorted way
+     * Time Complexity : O(N)
+     * @param arr1
+     * @param arr2
+     * @param arr3
+     * @return array of sorted integers
+     */
     public static int[] sorted(int[] arr1, int [] arr2, int[] arr3){
         int i = 0;
         int j = 0;
