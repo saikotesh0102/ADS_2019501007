@@ -16,13 +16,24 @@ public class Selection{
 		this.scReserved = scReserved;
 		this.stReserved = stReserved;
     }
-    
-    public void add(Student stu){
-        list.add(stu);
-    }
 
 	public Student[] getSelectedList(){
-        Arraylist<Student> studentsAlloted = new ArrayList<Student>();
+        for(int i = 0; i < list.length ; i++){
+            int max = i;
+            for(int j = i; j < list.length; j++){
+                if(list[j].compareTo(list[max]) == 1){
+                    max = j;
+                }
+            }
+            Student temp = list[i];
+            list[i] = list[max];
+            list[max] = temp;
+        }
+		return list;
+    }
+
+    public students[] studentsAlloted(){
+        Students[] studentsAlloted = new Student[vacancies];
         int count = 0;
         for(int i = 0; i < list.length && open > 0 && vacancies > 0; i++){
             studentsAlloted.add(list[i]);
@@ -54,20 +65,5 @@ public class Selection{
             }
         }
         return studentsAlloted;
-    }
-
-    public Student[] sorted(){
-        for(int i = 0; i < list.length ; i++){
-            int max = i;
-            for(int j = i; j < list.length; j++){
-                if(list[j].compareTo(list[max]) == 1){
-                    max = j;
-                }
-            }
-            Student temp = list[i];
-            list[i] = list[max];
-            list[max] = temp;
-        }
-		return list;
     }
 }
