@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Selection{
 	Student[] list;
 	int vacancies;
@@ -13,14 +15,52 @@ public class Selection{
 		this.bcReserved = bcReserved;
 		this.scReserved = scReserved;
 		this.stReserved = stReserved;
-	}
+    }
+    
+    public void add(Student stu){
+        list.add(stu);
+    }
 
 	public Student[] getSelectedList(){
-        //your code goes here.
+        Arraylist<Student> studentsAlloted = new ArrayList<Student>();
+        int count = 0;
+        for(int i = 0; i < list.length && open > 0 && vacancies > 0; i++){
+            studentsAlloted.add(list[i]);
+            open--;
+            vacancies--;
+            count++;
+        }
+
+        for (int i = count; i < list.length && vacancies > 0; i++) {
+            if (list[i].getStudentCategory().equals("BC") && bcReserved > 0) {
+                studentsAlloted.add(list[i]);
+                bcReserved--;
+                count++;
+                vacancies--;
+            }
+            
+            if (list[i].getStudentCategory().equals("SC") && scReserved > 0) {
+                studentsAlloted.add(list[i]);
+                scReserved--;
+                count++;
+                vacancies--;
+            }
+
+            if (list[i].getStudentCategory().equals("ST") && stReserved > 0) {
+                studentsAlloted.add(list[i]);
+                stReserved--;
+                count++;
+                vacancies--;
+            }
+        }
+        return studentsAlloted;
+    }
+
+    public Student[] sorted(){
         for(int i = 0; i < list.length ; i++){
             int max = i;
             for(int j = i; j < list.length; j++){
-                if(list[j].compareTo(list[max]) > 1){
+                if(list[j].compareTo(list[max]) == 1){
                     max = j;
                 }
             }
@@ -29,5 +69,5 @@ public class Selection{
             list[max] = temp;
         }
 		return list;
-	}
+    }
 }

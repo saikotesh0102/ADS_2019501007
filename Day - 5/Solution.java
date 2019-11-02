@@ -32,11 +32,11 @@ public class Solution {
 		checkOutput(finallist, no_of_positions,outputFile);
 
 	}
-	
+
 	public static void checkOutput(Student[] arr, int no_of_positions, String outputFile) throws Exception{
 		Scanner sc = new Scanner(new File(outputFile));
 		for(int i = 0; i < no_of_positions; i++){
-			if(!sc.nextLine().equals(arr[i].name)){
+			if(!sc.nextLine().equals(arr[i].getStudentName())){
 				System.out.println("Your output is not matching with output in file "+ outputFile);
 				return;
 			}
