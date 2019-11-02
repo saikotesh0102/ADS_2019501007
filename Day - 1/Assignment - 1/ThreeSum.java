@@ -1,6 +1,15 @@
+/**
+ * @author SaiKotesh0102
+ */
 import java.util.*;
 
 public class ThreeSum{
+    /**
+     * Method to find ThreeSum of elements
+     * Time Complexity : N^2 (LogN)
+     * @param arr
+     * @return count
+     */
     public static int count(int[] arr){
         int count = 0;
         int startElement;
