@@ -118,7 +118,7 @@ public class Student implements Comparable<Student>{
                         }else{
                             if(this.getStudentDOB() < that.getStudentDOB()){
                                 return 1;
-                            }else if(this.getStudentDOB2() > that.getStudentDOB2()){
+                            }else if(this.getStudentDOB() > that.getStudentDOB()){
                                 return -1;
                             }else{
                                 return 0;
