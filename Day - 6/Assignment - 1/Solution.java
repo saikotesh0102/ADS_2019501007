@@ -21,5 +21,18 @@ public class Solution{
 			}
 		}
 		return true;
+		// int k = 0;
+		// if(arr.length <= 0){
+		// 	return false;
+		// }
+
+		// while(k <= ((arr.length/2) - 2)){
+		// 	if(arr[k] <= arr[(2*k) + 1] && arr[k] <= arr[(2*k) + 2]){
+		// 		k++;
+		// 	}else{
+		// 		return false;
+		// 	}
+		// }
+		// return true;
 	}
 }
