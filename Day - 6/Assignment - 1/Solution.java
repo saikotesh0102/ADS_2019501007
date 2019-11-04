@@ -4,7 +4,7 @@
 
 public class Solution{
 	/**
-	 * 
+	 * Time Complexity : O(LogN)
 	 * @param arr
 	 * @return true or false
 	 */
