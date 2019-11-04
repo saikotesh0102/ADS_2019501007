@@ -65,9 +65,9 @@ public class Selection{
         }
         
         getSortedList(selected);
-        // for(int i = 0; i < selected.length; i++){
-        //     System.out.println(selected[i]);
-        // }
+        for(int i = 0; i < selected.length; i++){
+            System.out.println(selected[i]);
+        }
         return selected;
     }
 
