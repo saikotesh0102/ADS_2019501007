@@ -15,7 +15,7 @@ import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 
 public class TestJUnit {
-        @Test
+  @Test
   public void testCase1() {
     double[] arr = {122.2,121212.3};
     boolean res = true;
