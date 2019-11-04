@@ -18,14 +18,14 @@ public class Selection{
     }
 
 	public Student[] getSelectedList(){
-        getSortedList(list);
+		getSortedList(list);
         Student[] selected = new Student[vacancies];
 		int size = 0;
 
-		for (int i = 0; i <= open; i++) {
+		for (int i = 0; i < list.length && open > 0 && vacancies > 0; i++) {
 			selected[size++] = list[i];
-			list[i] = null;
 			open--;
+			list[i] = null;
 			vacancies--;
 		}
 
@@ -63,11 +63,7 @@ public class Selection{
 				}
 			}
         }
-        
-        getSortedList(selected);
-        for(int i = 0; i < selected.length; i++){
-            System.out.println(selected[i]);
-        }
+		getSortedList(selected);
         return selected;
     }
 

@@ -106,28 +106,27 @@ public class Student implements Comparable<Student>{
                 }else if(this.getStudentSub2() < that.getStudentSub2()){
                     return -1;
                 }else{
-                    if(this.getStudentDOB2() < that.getStudentDOB2()){
+                    if(this.getStudentDOB2() > that.getStudentDOB2()){
                         return 1;
-                    }else if(this.getStudentDOB2() > that.getStudentDOB2()){
+                    }else if(this.getStudentDOB2() < that.getStudentDOB2()){
                         return -1;
                     }else {
-                        if(this.getStudentDOB1() < that.getStudentDOB1()){
+                        if(this.getStudentDOB1() > that.getStudentDOB1()){
                             return 1;
-                        }else if(this.getStudentDOB1() > that.getStudentDOB1()){
+                        }else if(this.getStudentDOB1() < that.getStudentDOB1()){
                             return -1;
                         }else{
-                            if(this.getStudentDOB() < that.getStudentDOB()){
+                            if(this.getStudentDOB() > that.getStudentDOB()){
                                 return 1;
-                            }else if(this.getStudentDOB() > that.getStudentDOB()){
+                            }else if(this.getStudentDOB() < that.getStudentDOB()){
                                 return -1;
-                            }else{
-                                return 0;
                             }
                         }
                     }
                 }
             }
         }
+        return 0;
     }
 
     public String toString(){
