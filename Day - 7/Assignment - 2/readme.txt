@@ -8,4 +8,3 @@ This procedure is called the move-to-front heuristic and expected a linear worst
 solution for the search method.
 
 Test cases: Your code will be tested by unit testing. 
-
