@@ -14,7 +14,6 @@ public class MaxPQ<Key extends Comparable<Key>> {
         } else {
             return false;
         }
-        // return true;
     }
 
     public void insert(final Key key) {

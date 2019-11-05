@@ -15,7 +15,6 @@ public class MinPQ<Key extends Comparable<Key>> {
         } else {
             return false;
         }
-        // return true;
     }
 
     public int size() {
