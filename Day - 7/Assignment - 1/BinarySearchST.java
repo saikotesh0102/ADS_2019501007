@@ -1,14 +1,14 @@
 import java.util.*;
 import java.lang.*;
 
-public class BinarySearchST{
-    private String[] keys;
-    private int[] values;
+public class BinarySearchST<Key extends Comparable<Key>, Value>{
+    private Key[] keys;
+    private Value[] values;
     private int size;
 
     public BinarySearchST(){
-        this.keys = new String[2];
-        this.values = new int[2];
+        this.keys = (Key[]) new Comparable[2];
+        this.values = (Value[]) new Object[2];
         this.size = 0;
     }
 
@@ -17,8 +17,8 @@ public class BinarySearchST{
         values = Arrays.copyOf(values, size + 1);
     }
 
-    public void put(final String key, final int value) {
-        if (value == 0) {
+    public void put(final Key key, final Value value) {
+        if (value == null) {
             delete(key);
             return;
         }
@@ -39,15 +39,15 @@ public class BinarySearchST{
         size++;
     }
 
-    public int get(final String key) {
+    public Value get(final Key key) {
         int rank = rank(key);
         if (rank < size && (keys[rank].compareTo(key) == 0)) {
             return values[rank];
         }
-        return 0;
+        return null;
     }
 
-    public int rank(final String key){
+    public int rank(final Key key){
         int low = 0;
         int high = size - 1;
         while (low <= high) {
@@ -64,15 +64,15 @@ public class BinarySearchST{
         return low;
     }
 
-    public String max() {
+    public Key max() {
         return keys[size - 1];
     }
 
-    public String min() {
+    public Key min() {
         return keys[0];
     }
 
-    public String floor(final String key) {
+    public Key floor(final Key key) {
         int rank = rank(key);
         if (rank == 0) {
             return null;
@@ -92,11 +92,11 @@ public class BinarySearchST{
         return size == 0;
     }
 
-    public boolean contains(final String key) {
-        return get(key) != 0;
+    public boolean contains(final Key key) {
+        return get(key) != null;
     }
 
-    public void delete(final String key) {
+    public void delete(final Key key) {
         int rank = rank(key);
         if (rank == size || (keys[rank].compareTo(key) != 0)) {
             return;
@@ -107,7 +107,7 @@ public class BinarySearchST{
         }
         size--;
         keys[size] = null;
-        values[size] = 0;
+        values[size] = null;
     }
 
     public void keys() {
