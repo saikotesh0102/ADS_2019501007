@@ -110,12 +110,11 @@ public class BinarySearchST<Key extends Comparable<Key>, Value>{
         values[size] = null;
     }
 
-    public String keys() {
-        String st = "";
-        for (int i = 0; i < size; i++) {
-            st += keys[i] + " ";
+    public Iterable keys() {
+        Queue K = new Queue();
+        for(int i = 0; i < size; i++) {
+            K.enqueue(keys[i]);
         }
-        // st += "]";
-        return st;
+        return K;
     }
 }
