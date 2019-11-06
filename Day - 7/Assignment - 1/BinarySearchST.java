@@ -111,10 +111,10 @@ public class BinarySearchST<Key extends Comparable<Key>, Value>{
     }
 
     public Iterable keys() {
-        Queue K = new Queue();
+        Queue queue = new Queue();
         for(int i = 0; i < size; i++) {
-            K.enqueue(keys[i]);
+            queue.enqueue(keys[i]);
         }
-        return K;
+        return queue;
     }
 }
