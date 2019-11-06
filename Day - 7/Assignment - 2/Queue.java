@@ -66,7 +66,7 @@ public class Queue<Item> implements Iterable<Item> {
     }
 
     public String toString(){
-        String st = " ";
+        String st = "";
         int i;
         for (i = 0; i < last ; i++) {
             st += q[i] + " ";
