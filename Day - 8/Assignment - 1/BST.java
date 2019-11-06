@@ -1,5 +1,13 @@
-import java.util.*;
+/**
+ * @author SaiKotesh0102
+ */
 
+import java.util.*;
+/**
+ * BST Class to implement Inerface of Binary Search Tree
+ * @param <Key>
+ * @param <Value>
+ */
 public class BST<Key extends Comparable<Key>, Value>{
     private class Node{
         public Key key;
@@ -7,7 +15,12 @@ public class BST<Key extends Comparable<Key>, Value>{
         public Node left;
         public Node right;
         public int count;
-    
+        /**
+         * Constructor for class Node
+         * @param key
+         * @param value
+         * @param count
+         */
         public Node(Key key, Value value, int count){
             this.key = key;
             this.value = value;
@@ -15,7 +28,12 @@ public class BST<Key extends Comparable<Key>, Value>{
         }
     }
     private Node root;
-
+    /**
+     * Put Method to insert element into Tree
+     * Time Complexity : O(N)
+     * @param key
+     * @param value
+     */
     public void put(Key key, Value value){
         root = put(root, key, value);
     }
@@ -35,7 +53,12 @@ public class BST<Key extends Comparable<Key>, Value>{
         x.count = 1 + size(x.left) + size(x.right);
         return x;
     }
-
+    /**
+     * Get method to get the value of a particular key
+     * Time Complexity : O(logN)
+     * @param key
+     * @return value
+     */
     public Value get(Key key){
         Node x = root;
         while(x != null){
@@ -50,7 +73,11 @@ public class BST<Key extends Comparable<Key>, Value>{
         }
         return null;
     }
-
+    /**
+     * Size method to get the size of the Tree
+     * Time Complexity : O(1)
+     * @return count
+     */
     public int size(){
         return size(root);
     }
@@ -61,7 +88,12 @@ public class BST<Key extends Comparable<Key>, Value>{
         }
         return x.count;
     }
-
+    /**
+     * Floor method returns the Key that is largest key less than or equal to key
+     * Time Complexity : O(LogN)
+     * @param key
+     * @return key
+     */
     public Key floor(Key key){
         Node x = floor(root, key);
         if(x == null){
@@ -88,7 +120,11 @@ public class BST<Key extends Comparable<Key>, Value>{
             return x;
         }
     }
-
+    /**
+     * Time Complexity : O(LogN)
+     * @param key
+     * @return int number of keys less than key
+     */
     public int rank(Key key){
         return rank(key, root); 
     }
@@ -106,7 +142,9 @@ public class BST<Key extends Comparable<Key>, Value>{
             return size(x.left);
         }
     }
-
+    /**
+     * Method to delete the Minimum element form a given tree
+     */
     public void deleteMin(){
         root = deleteMin(root);
     }
@@ -119,7 +157,9 @@ public class BST<Key extends Comparable<Key>, Value>{
         x.count = 1 + size(x.left) + size(x.right);
         return x;
     }
-
+    /**
+     * Method to delete the Maximum element from a given tree
+     */
     public void deleteMax(){
         root = deleteMax(root);
     }
@@ -132,7 +172,10 @@ public class BST<Key extends Comparable<Key>, Value>{
         x.count = 1 + size(x.right) + size(x.left);
         return x;
     }
-
+    /**
+     * Method to delete the given Key
+     * @param key
+     */
     public void delete(Key key){
         root = delete(root, key);
     }
@@ -161,7 +204,10 @@ public class BST<Key extends Comparable<Key>, Value>{
         x.count = size(x.left) + size(x.right) + 1;
         return x;
     }
-
+    /**
+     * Method to get the Minimum element of a particular tree
+     * @return Minimum value Key
+     */
     public Key min() {
         return min(root).key;
     }
@@ -174,7 +220,10 @@ public class BST<Key extends Comparable<Key>, Value>{
             return min(x.left);
         }
     }
-
+    /**
+     * Method to get the Minimum element of a particular tree
+     * @return Maximum value key
+     */
     public Key max() {
         return max(root).key;
     }
@@ -187,7 +236,11 @@ public class BST<Key extends Comparable<Key>, Value>{
             return max(x.right);
         }
     }
-
+    /**
+     * Select Method returns key of rank k
+     * @param k
+     * @return Key of a Particular Rank
+     */
     public Key select(int k) {
         Node x = select(root, k);
         return x.key;
@@ -206,7 +259,11 @@ public class BST<Key extends Comparable<Key>, Value>{
             return x;
         }
     }
-
+    /**
+     * Ceiling Method is used to find smallest key greater than or equal to key
+     * @param key
+     * @return Key 
+     */
     public Key ceiling(Key key) {
         Node x = ceiling(root, key);
         if (x == null){
