@@ -1,8 +1,14 @@
+/**
+ * @author SaiKotesh0102
+ */
+
 import java.util.*;
 
 public class SequentialSearchST<Key extends Comparable<Key>, Value>{
     private Node head;
-
+    /**
+     * Private Node class to implement Sequential Search using Linked List
+     */
     private class Node {
         private Key key;
         private Value value;
