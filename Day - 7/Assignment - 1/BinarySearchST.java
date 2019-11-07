@@ -1,6 +1,14 @@
+/**
+ * @author SaiKotesh0102
+ */
+
 import java.util.*;
 import java.lang.*;
-
+/**
+ * Binary Search Symbol Table API
+ * @param <Key>
+ * @param <Value>
+ */
 public class BinarySearchST<Key extends Comparable<Key>, Value>{
     private Key[] keys;
     private Value[] values;
@@ -11,12 +19,20 @@ public class BinarySearchST<Key extends Comparable<Key>, Value>{
         this.values = (Value[]) new Object[2];
         this.size = 0;
     }
-
+    /**
+     * resize method to change the size of the array when it is full or 
+     * half by increasing the size by a element
+     */
     private void resize() {
         keys = Arrays.copyOf(keys, size + 1);
         values = Arrays.copyOf(values, size + 1);
     }
-
+    /**
+     * put method inserts an element into symbol table
+     * Time Complexity = O(N)
+     * @param key
+     * @param value
+     */
     public void put(final Key key, final Value value) {
         if (value == null) {
             delete(key);
@@ -38,7 +54,11 @@ public class BinarySearchST<Key extends Comparable<Key>, Value>{
         values[rank] = value;
         size++;
     }
-
+    /**
+     * get method gives us the value of a particular key
+     * @param key
+     * @return value of a particular key
+     */
     public Value get(final Key key) {
         int rank = rank(key);
         if (rank < size && (keys[rank].compareTo(key) == 0)) {
@@ -46,7 +66,11 @@ public class BinarySearchST<Key extends Comparable<Key>, Value>{
         }
         return null;
     }
-
+    /**
+     * Time Complexity : O(N)
+     * @param key
+     * @return no of values less than that key
+     */
     public int rank(final Key key){
         int low = 0;
         int high = size - 1;
@@ -71,7 +95,11 @@ public class BinarySearchST<Key extends Comparable<Key>, Value>{
     public Key min() {
         return keys[0];
     }
-
+    /**
+     * Floor method returns the Key that is largest key less than or equal to key
+     * @param key
+     * @return key 
+     */
     public Key floor(final Key key) {
         int rank = rank(key);
         if (rank == 0) {
@@ -95,7 +123,10 @@ public class BinarySearchST<Key extends Comparable<Key>, Value>{
     public boolean contains(final Key key) {
         return get(key) != null;
     }
-
+    /**
+     * Delete method removes a particular key from Symbol table
+     * @param key
+     */
     public void delete(final Key key) {
         int rank = rank(key);
         if (rank == size || (keys[rank].compareTo(key) != 0)) {
