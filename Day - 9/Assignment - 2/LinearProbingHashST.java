@@ -1,5 +1,13 @@
-import java.util.*;
+/**
+ * @author SaiKotesh0102
+ */
 
+import java.util.*;
+/**
+ * LinearProbingHashST class implements the API of Hash Tables under Linear Probing
+ * @param <Key>
+ * @param <Value>
+ */
 public class LinearProbingHashST<Key extends Comparable<Key>, Value>{
     private static final int INIT_CAPACITY = 4;
     private int n;           // number of key-value pairs in the symbol table
@@ -10,14 +18,22 @@ public class LinearProbingHashST<Key extends Comparable<Key>, Value>{
     public LinearProbingHashST() {
         this(INIT_CAPACITY);
     }
-
+    /**
+     * Construtor
+     * @param capacity
+     */
     public LinearProbingHashST(int capacity) {
         this.m = capacity;
         this.n = 0;
         this.keys = (Key[])   new Comparable[m];
         this.vals = (Value[]) new Comparable[m];
     }
-
+    /**
+     * Time Complexity : O(1) - Best
+     * Time Complexity : O(N) - Worst
+     * @param key
+     * @param val
+     */
     public void put(Key key, Value val) {
         if (val == null) {
             delete(key);
@@ -38,7 +54,12 @@ public class LinearProbingHashST<Key extends Comparable<Key>, Value>{
         vals[i] = val;
         n++;
     }
-
+    /**
+     * get method return the value of a particular key
+     * Time Complexity : O(N)
+     * @param key
+     * @return
+     */
     public Value get(Key key) {
         for (int i = hash(key); keys[i] != null; i = (i + 1) % m){
             if (keys[i].equals(key)){
@@ -47,7 +68,11 @@ public class LinearProbingHashST<Key extends Comparable<Key>, Value>{
         }
         return null;
     }
-
+    /**
+     * delete method deletes the particular key from the list
+     * Time Complexity : o(N) 
+     * @param key
+     */
     public void delete(Key key) {
         if (!contains(key)) return;
         // find position i of key
