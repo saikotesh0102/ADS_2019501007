@@ -23,7 +23,12 @@ public class BST3Arrays<Key extends Comparable<Key>, Value>{
         leftArr = new Integer[10];
         rightArr = new Integer[10];
     }
-
+    /**
+     * Insert method to insert the keys and respective indices into their arrays
+     * Time Complexity : O(N)
+     * @param key
+     * @param value
+     */
     public void insert(Key key, Value value) {
         if (rootArr[1] == null) {
             rootArr[1] = key;
