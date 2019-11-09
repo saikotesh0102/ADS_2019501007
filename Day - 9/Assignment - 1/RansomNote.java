@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class RansomNote<Key, Value> {
     private static final int INIT_CAPACITY = 4;
 
@@ -69,8 +71,9 @@ public class RansomNote<Key, Value> {
 
     public Value get(Key key) {
         for (int i = hash(key); keys[i] != null ; i = (i + 1) % m)
-            if (keys[i].equals(key))
+            if (keys[i].equals(key)){
                 return vals[i];
+            }
         return null;
     }
 
@@ -101,21 +104,57 @@ public class RansomNote<Key, Value> {
         }
         n--;
 
+        // halves size of array if it's 12.5% full or less
         if (n > 0 && n <= m/8) resize(m/2);
     }
     
+    public static int wordfreq(String[] arofinput, String k){
+        int freq=0;
+        for(int i=0;i<arofinput.length;i++){
+            if(arofinput[i].equals(k)){
+                freq++;
+            }
+        }
+        return freq;
+    }
     public static void main(String[] args) {
         RansomNote<String, Integer> st = new RansomNote<String, Integer>();
-        String[] arr = {"give","me","one","grand","tonight"};
-        for(int i = 0; i < arr.length; i++)
-        {
+        String[] arr = {"give","me","one","grand"};
+        for(int i = 0; i < arr.length; i++){
             if(st.contains(arr[i])){
                 st.put(arr[i], (st.get(arr[i])+1));
             }else{
                 st.put(arr[i],1);
             }
         }
-        System.out.println(st.get("grand"));
-    }
 
+        System.out.println(st.get("grand"));
+        Scanner s = new Scanner(System.in);
+        String input = s.nextLine();
+        int spaceCount = 0;
+        s.close();
+        for (char c : input.toCharArray()){
+            if (c == ' '){
+                spaceCount++;
+            }
+        }
+
+        String[] arrOfStr = new String[spaceCount+1];
+        arrOfStr = input.split(" ",10);
+        boolean a= false;
+        for(int i = 0; i < arrOfStr.length ; i++){
+            if(!st.contains(arrOfStr[i])){
+                a=false;
+                System.out.println("false");
+                break;
+            }else if (st.contains(arrOfStr[i]) && st.get(arrOfStr[i]) >= st.wordfreq(arrOfStr, arrOfStr[i]) ){
+                a=true;
+            }
+        }
+        if(a==false){
+            System.out.println("not the right input");
+        }else{
+            System.out.println("the right input");
+        }
+    }
 }
