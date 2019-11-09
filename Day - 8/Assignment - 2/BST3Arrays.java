@@ -29,7 +29,7 @@ public class BST3Arrays<Key extends Comparable<Key>, Value>{
      * @param key
      * @param value
      */
-    public void insert(Key key, Value value) {
+    public void insert(Key key) {
         if (rootArr[1] == null) {
             rootArr[1] = key;
             return;
@@ -51,25 +51,55 @@ public class BST3Arrays<Key extends Comparable<Key>, Value>{
             }
         }
     }
-
+    /**
+     * checks if the element is in BST
+     * returns true if present else false.
+     * @param key key to be searched.
+     * @return boolean.
+     */
+    public boolean contains(Key key) {
+        for (int i = 1; i < rootArr.length; ) {
+            if (rootArr[i] != null && key.compareTo(rootArr[i]) > 0) {
+                i = 2 * i;
+                i = i + 1;
+            } else if (rootArr[i] != null && key.compareTo(rootArr[i]) < 0) {
+                i = 2 * i;
+            } else {
+                if (rootArr[i] == null) {
+                    return false;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public static void main(String[] args) {
         BST3Arrays bstArr = new BST3Arrays();
-        bstArr.insert(1, 6);
-        bstArr.insert(2, 6);
-        bstArr.insert(3, 6);
-        bstArr.insert(4, 6);
-        bstArr.insert(5, 6);
-        bstArr.insert(6, 6);
-        bstArr.insert(7, 6);
+        bstArr.insert(6);
+        bstArr.insert(4);
+        bstArr.insert(12);
+        bstArr.insert(5);
+        bstArr.insert(9);
+        bstArr.insert(13);
+        bstArr.insert(11);
+        bstArr.insert(5);
+        bstArr.insert(2);
+        bstArr.insert(3);
+        bstArr.insert(6);
+        bstArr.insert(1);
 
         System.out.println("-------------------------------------------");
         System.out.println("root = " + bstArr.toString(bstArr.rootArr));
         System.out.println("left = " + bstArr.toString(bstArr.leftArr)); 
         System.out.println("right = " + bstArr.toString(bstArr.rightArr));
         System.out.println("-------------------------------------------");
-
     }
-
+    /**
+     * displays the array.
+     * @param key array of keys.
+     * @return
+     */
     String toString(Key[] key) {
         String str = "";
         for (int i = 1; i < key.length; i++) {
