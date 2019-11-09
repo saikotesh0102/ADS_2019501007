@@ -6,22 +6,11 @@ public class RansomNote<Key, Value> {
     private Key[] keys;      // the keys
     private Value[] vals;    // the values
 
-
-    /**
-     * Initializes an empty symbol table.
-     */
-    public RansomNote
-() {
+    public RansomNote() {
         this(INIT_CAPACITY);
     }
 
-    /**
-     * Initializes an empty symbol table with the specified initial capacity.
-     *
-     * @param capacity the initial capacity
-     */
-    public RansomNote
-(int capacity) {
+    public RansomNote(int capacity) {
         m = capacity;
         n = 0;
         keys = (Key[])   new Comparable[m];
@@ -32,10 +21,9 @@ public class RansomNote<Key, Value> {
     public int size() {
         return n;
     }
+
     private void resize(int capacity) {
-        RansomNote
-    <Key, Value> temp = new RansomNote
-    <Key, Value>(capacity);
+        RansomNote<Key, Value> temp = new RansomNote<Key, Value>(capacity);
         for (int i = 0; i < m; i++) {
             if (keys[i] != null) {
                 temp.put(keys[i], vals[i]);
@@ -46,38 +34,18 @@ public class RansomNote<Key, Value> {
         m    = temp.m;
     }
 
-
-    /**
-     * Returns true if this symbol table is empty.
-     */
     public boolean isEmpty() {
         return size() == 0;
     }
 
-    /**
-     * Returns true if this symbol table contains the specified key.
-     *
-     * @param  key the key
-     * @return bool
-     * time complexity O(1)
-     */
     public boolean contains(Key key) {
         return get(key) != null;
     }
 
-    // hash function for keys - returns value between 0 and M-1
-    // time complexity O(1)
     private int hash(Key key) {
         return (key.hashCode() &                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            0x7fffffff) % m;
     }
 
-
-    /**
-     * Inserts the specified key-value pair into the symbol table
-     * @param  key the key
-     * @param  val the value
-     * time complexity O(N)
-     */
     public void put(Key key, Value val) {
 
         if (val == null) {
@@ -85,7 +53,6 @@ public class RansomNote<Key, Value> {
             return;
         }
 
-        // double table size if 50% full
         if (n >= m/2) resize(2*m);
 
         int i;
@@ -100,13 +67,6 @@ public class RansomNote<Key, Value> {
         n++;
     }
 
-    /**
-     * Returns the value associated with the specified key.
-     * @param key the key
-     * @return the value associated with {@code key};
-     *         {@code null} if no such value
-     * time complexity O(N)
-     */
     public Value get(Key key) {
         for (int i = hash(key); keys[i] != null ; i = (i + 1) % m)
             if (keys[i].equals(key))
@@ -114,15 +74,7 @@ public class RansomNote<Key, Value> {
         return null;
     }
 
-    /**
-     * Removes the specified key and its associated value from this symbol table
-     * (if the key is in this symbol table).
-     *
-     * @param  key the key
-     * time complexity O(2N)
-     */
     public void delete(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to delete() is null");
         if (!contains(key)) return;
 
         // find position i of key
@@ -147,40 +99,14 @@ public class RansomNote<Key, Value> {
             put(keyToRehash, valToRehash);
             i = (i + 1) % m;
         }
-
         n--;
 
-        // halves size of array if it's 12.5% full or less
         if (n > 0 && n <= m/8) resize(m/2);
-
-        assert check();
     }
-    // integrity check - don't check after each put() because
-    // integrity not maintained during a delete()
-    //time complexity O(1)
-    private boolean check() {
-
-        // check that hash table is at most 50% full
-        if (m < 2*n) {
-            System.err.println("Hash table size m = " + m + "; array size n = " + n);
-            return false;
-        }
-
-        // check that each key in table can be found by get()
-        for (int i = 0; i < m; i++) {
-            if (keys[i] == null) continue;
-            else if (get(keys[i]) != vals[i]) {
-                System.err.println("get[" + keys[i] + "] = " + get(keys[i]) + "; vals[i] = " + vals[i]);
-                return false;
-            }
-        }
-        return true;
-    }
+    
     public static void main(String[] args) {
-        RansomNote
-    <String, Integer> st = new RansomNote
-    <String, Integer>();
-        String[] arr = {"sahithi","vadla","is","a","killer","killer"};
+        RansomNote<String, Integer> st = new RansomNote<String, Integer>();
+        String[] arr = {"give","me","one","grand","tonight"};
         for(int i = 0; i < arr.length; i++)
         {
             if(st.contains(arr[i])){
@@ -189,11 +115,7 @@ public class RansomNote<Key, Value> {
                 st.put(arr[i],1);
             }
         }
-        System.out.println(st.get("sahithi"));
-        System.out.println(st.get("vadla"));
-        System.out.println(st.get("is"));
-        System.out.println(st.get("a"));
-        System.out.println(st.get("killer"));
+        System.out.println(st.get("grand"));
     }
 
 }
