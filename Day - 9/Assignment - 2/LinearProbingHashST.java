@@ -117,6 +117,7 @@ public class LinearProbingHashST<Key extends Comparable<Key>, Value>{
     }
 
     private int hash(Key key) {
+        // System.out.println(key.hashCode());
         return (key.hashCode() & 0x7fffffff) % m;
     }
 
@@ -136,5 +137,7 @@ public class LinearProbingHashST<Key extends Comparable<Key>, Value>{
         LinearProbingHashST<String, Integer> st = new LinearProbingHashST<String, Integer>();
         st.put("Sai",1);
         System.out.println(st.get("Sai"));
+        st.put("Kotesh",3);
+        System.out.println(st.get("Kotesh"));
     }
 }
