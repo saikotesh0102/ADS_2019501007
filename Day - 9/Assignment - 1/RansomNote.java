@@ -147,7 +147,7 @@ public class RansomNote<Key, Value> {
                 a=false;
                 System.out.println("false");
                 break;
-            }else if (st.contains(arrOfStr[i]) && st.get(arrOfStr[i]) >= Ransom.frequency(arrOfStr, arrOfStr[i]) ){
+            }else if (st.contains(arrOfStr[i]) && st.get(arrOfStr[i]) >= RansomNote.frequency(arrOfStr, arrOfStr[i]) ){
                 a=true;
             }
         }
