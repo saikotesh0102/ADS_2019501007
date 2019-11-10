@@ -108,14 +108,14 @@ public class RansomNote<Key, Value> {
         if (n > 0 && n <= m/8) resize(m/2);
     }
     
-    public static int wordfreq(String[] arofinput, String k){
-        int freq=0;
+    public static int frequency(String[] arofinput, String k){
+        int frequency=0;
         for(int i=0;i<arofinput.length;i++){
             if(arofinput[i].equals(k)){
-                freq++;
+                frequency++;
             }
         }
-        return freq;
+        return frequency;
     }
     public static void main(String[] args) {
         RansomNote<String, Integer> st = new RansomNote<String, Integer>();
@@ -147,7 +147,7 @@ public class RansomNote<Key, Value> {
                 a=false;
                 System.out.println("false");
                 break;
-            }else if (st.contains(arrOfStr[i]) && st.get(arrOfStr[i]) >= Ransom.wordfreq(arrOfStr, arrOfStr[i]) ){
+            }else if (st.contains(arrOfStr[i]) && st.get(arrOfStr[i]) >= Ransom.frequency(arrOfStr, arrOfStr[i]) ){
                 a=true;
             }
         }
