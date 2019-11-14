@@ -9,7 +9,7 @@ public class FarthestPair{
      * @return Max and Min value pair from the array
      */
     public String farthestPair(double[] arr){
-        double max = arr[arr.length - 1];
+        double max = arr[0];
         double min = arr[0];
         for(int i = 0; i < arr.length ; i++){
             if(arr[i] < min){
