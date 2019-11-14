@@ -12,7 +12,7 @@ public class FarthestPair{
      */
     public String farthestPair(double[] arr){
         if(arr.length == 0 || arr.length == 1){
-            return null;
+            return "Invalid Input, Array must have minimum 2 elements";
         }else{
             double max = arr[0];
         double min = arr[0];
