@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * @author Sai Kotesh
  */
@@ -9,7 +11,10 @@ public class FarthestPair{
      * @return Max and Min value pair from the array
      */
     public String farthestPair(double[] arr){
-        double max = arr[0];
+        if(arr.length == 0 || arr.length == 1){
+            return null;
+        }else{
+            double max = arr[0];
         double min = arr[0];
         for(int i = 0; i < arr.length ; i++){
             if(arr[i] < min){
@@ -21,11 +26,20 @@ public class FarthestPair{
             }
         }
         return "[" + max + ","+ min + "]";
+        }
     }
 
     public static void main(String[] args) {
         FarthestPair fp = new FarthestPair();
-        double[] arr = {10.0,5.1,2.0,26.0,100.0,90.0};
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the length of Array");
+        int arrLength = scan.nextInt();
+        double[] arr = new double[arrLength];
+        for(int i = 0; i < arrLength; i++){
+            System.out.println("Enter the " + i + " element");
+            arr[i] = scan.nextDouble();
+        }
         System.out.println(fp.farthestPair(arr));
+        scan.close();
     }
 }
