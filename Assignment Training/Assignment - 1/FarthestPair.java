@@ -1,9 +1,13 @@
 /**
- * @aut
+ * @author Sai Kotesh
  */
 
 public class FarthestPair{
-
+    /**
+     * Time Complexity : O(N)
+     * @param arr
+     * @return Max and Min value pair from the array
+     */
     public String farthestPair(double[] arr){
         double max = arr[arr.length - 1];
         double min = arr[0];
