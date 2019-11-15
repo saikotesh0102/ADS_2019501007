@@ -1,63 +1,86 @@
 /**
  * @author SaiKotesh0102
+ * 
+ * This class implements a circular queue where we use only one pointer
+ * and connect them in a way that the links are not broken.
  */
-
 public class Queue{
     private class Node{
         Node next;
-        int value;
+        int data;
 
-        Node(int value){
-            this.value = value;
+        Node(int data){
+            this.data = data;
             this.next = null;
         }
     }
 
-    Node last;
+    Node tail;
     int size;
-
+    /**
+     * Construtor which initializes an empty queue
+     */
     public Queue(){
-        this.last = null;
+        this.tail = null;
         this.size = 0;
     }
-
+    /**
+     * checks whether the queue is empty or not
+     * @return true if empty and false if not
+     */
     public boolean isEmpty(){
         return size == 0;
     }
-
+    /**
+     * @return size of the queue
+     */
     public int size(){
         return size;
     }
-
-    public void enqueue(int value){
-        Node x = new Node(value);
+    /**
+     * Inserts an element at the last
+     * if the queue is empty last and first becomes the same
+     * @param data
+     */
+    public void enqueue(int data){
+        Node x = new Node(data);
         if(isEmpty()){
-            last = x;
-            last.next = last;
+            tail = x;
+            tail.next = tail;
         }else{
-            Node temp = last;
-            last = temp;
-            last.next = temp.next;
+            Node temp = tail;
+            tail = x;
+            tail.next = temp.next;
+            temp.next = tail;
         }
         size++;
     }
-
+    /**
+     * removes an element from the front and connects the next element to the last
+     * @return the value of the removed element
+     */
     public int dequeue(){
         if(isEmpty()){
-            return 0;
-        }else{
-            Node x = last.next;
-            last.next = last.next.next;
+            return -1;
+        }else if(size == 1){
+            Node temp = tail;
+            tail = null;
             size--;
-            return x.value;
+            return temp.data;
+        }else{
+            Node x = tail.next;
+            Node temp = tail.next;
+            tail.next = temp.next;
+            size--;
+            return x.data;
         }
     }
 
     public static void main(String[] args) {
         Queue queue = new Queue();
-        queue.enqueue(12);
-        queue.enqueue(1);
-        queue.isEmpty();
+        queue.enqueue(10);
+        queue.enqueue(11);
+        System.out.println(queue.isEmpty());
         System.out.println(queue.dequeue());
         System.out.println(queue.dequeue());
     }
