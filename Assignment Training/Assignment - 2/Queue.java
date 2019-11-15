@@ -69,8 +69,7 @@ public class Queue{
             return temp.data;
         }else{
             Node x = tail.next;
-            Node temp = tail.next;
-            tail.next = temp.next;
+            tail.next = tail.next.next;
             size--;
             return x.data;
         }
