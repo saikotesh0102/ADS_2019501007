@@ -80,8 +80,11 @@ public class Queue{
         Queue queue = new Queue();
         queue.enqueue(10);
         queue.enqueue(11);
+        queue.enqueue(1);
         System.out.println(queue.isEmpty());
         System.out.println(queue.dequeue());
         System.out.println(queue.dequeue());
+        System.out.println(queue.dequeue());
+        System.out.println(queue.isEmpty());
     }
 }
