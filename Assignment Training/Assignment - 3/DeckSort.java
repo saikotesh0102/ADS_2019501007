@@ -28,9 +28,19 @@ public class DeckSort{
         int[] rank = {1,2,3,4};
         int[] value = {1,2,3,4,5,6,7,8,9,10,11,12,13};
         for(int i = 0; i < rank.length; i++){
-            for(int j = 0; i < value.length; j++){
+            for(int j = 1; j <= value.length; j++){
                 cards[n++] = new Card(value[j],rank[i]);
             }
         }
+
+        Random rand = new Random();
+		
+		for (int i = 0; i < cards.length; i++) {
+			int randomIndexToSwap = rand.nextInt(cards.length);
+			Card temp = cards[randomIndexToSwap];
+			cards[randomIndexToSwap] = cards[i];
+			cards[i] = temp;
+		}
+		System.out.println(Arrays.toString(cards));
     }
 }
