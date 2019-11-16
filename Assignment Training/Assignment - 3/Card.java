@@ -2,7 +2,7 @@ public class Card implements Comparable<Card>{
     public int faceValue;
     public int type;
 
-    public Card(int faceValue, int type){
+    public Card(int type, int faceValue){
         this.faceValue = faceValue;
         this.type = type;
     }

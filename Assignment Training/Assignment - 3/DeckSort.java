@@ -5,7 +5,7 @@ public class DeckSort{
     static int n;
 
     public DeckSort(){
-        DeckSort.cards = new Card[52];
+        cards = new Card[52];
         DeckSort.n = 0;
     }
 
@@ -25,11 +25,13 @@ public class DeckSort{
     }
 
     public static void main(String[] args) {
+        DeckSort sort = new DeckSort();
         int[] rank = {1,2,3,4};
         int[] value = {1,2,3,4,5,6,7,8,9,10,11,12,13};
         for(int i = 0; i < rank.length; i++){
-            for(int j = 1; j <= value.length; j++){
-                cards[n++] = new Card(value[j],rank[i]);
+            for(int j = 0; j < value.length; j++){
+                cards[n++] = new Card(rank[i],value[j]);
+                // System.out.println(rank[i] + " " + value[j] + " " + cards[n-1]);
             }
         }
 
@@ -41,6 +43,6 @@ public class DeckSort{
 			cards[randomIndexToSwap] = cards[i];
 			cards[i] = temp;
 		}
-		System.out.println(Arrays.toString(cards));
+		System.out.println(Arrays.toString(sort.sorting(cards)));
     }
 }
