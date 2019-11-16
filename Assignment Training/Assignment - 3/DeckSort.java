@@ -1,3 +1,7 @@
+/**
+ * @author SaiKotesh0102
+ */
+
 import java.util.*;
 
 public class DeckSort{
@@ -8,7 +12,12 @@ public class DeckSort{
         cards = new Card[52];
         DeckSort.n = 0;
     }
-
+    /**
+     * Selection Sort method to sort the Cards based 
+     * on Compare To method.
+     * @param cards
+     * @return Cards in Sorted Order.
+     */
     public static Card[] sorting(Card[] cards){
         for(int i = 0; i < cards.length; i++){
             int min = i;
