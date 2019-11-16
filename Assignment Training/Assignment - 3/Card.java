@@ -46,10 +46,10 @@ public class Card implements Comparable<Card>{
         }else if(this.faceValue == 13){
             value = "K";
         }else{
-            value = "" + rank;
+            value = this.faceValue + "";
         }
 
-        return rank +" " + value;
+        return rank +":"+ value;
     }
 
 }

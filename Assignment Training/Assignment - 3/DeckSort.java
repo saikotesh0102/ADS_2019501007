@@ -9,11 +9,11 @@ public class DeckSort{
         DeckSort.n = 0;
     }
 
-    public Card[] sorting(Card[] cards){
+    public static Card[] sorting(Card[] cards){
         for(int i = 0; i < cards.length; i++){
             int min = i;
             for (int j = i+1; j < cards.length; j++) {
-                if(cards[i].compareTo(cards[min]) == -1){
+                if(cards[j].compareTo(cards[min]) == -1){
                     min = j;
                 }
             }
@@ -31,7 +31,6 @@ public class DeckSort{
         for(int i = 0; i < rank.length; i++){
             for(int j = 0; j < value.length; j++){
                 cards[n++] = new Card(rank[i],value[j]);
-                // System.out.println(rank[i] + " " + value[j] + " " + cards[n-1]);
             }
         }
 
@@ -43,6 +42,8 @@ public class DeckSort{
 			cards[randomIndexToSwap] = cards[i];
 			cards[i] = temp;
 		}
-		System.out.println(Arrays.toString(sort.sorting(cards)));
+        System.out.println(Arrays.toString(cards));
+        sort.sorting(cards);
+        System.out.println(Arrays.toString(cards));
     }
 }
