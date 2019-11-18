@@ -1,0 +1,4 @@
+I have implemented MinPQ and MaxPQ
+If the elements remaining in the MinPQ after the deletion of N-K elements in MinPQ and
+the K elements after deletion in the MaxPQ are same then we can say that the remaining 
+elements in the MinPQ after the N-K deletions are the K greatest elements.
