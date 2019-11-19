@@ -12,7 +12,7 @@ public class BruteCollinearPoints{
     public BruteCollinearPoints(Point[] points){
         checkPoints(points);
 
-        this.points = points;
+        this.points = points.clone();
         this.lineSegments = new LineSegment[2];
         this.lineSegmentCount = 0;
 
