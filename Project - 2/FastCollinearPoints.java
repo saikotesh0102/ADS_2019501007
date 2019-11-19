@@ -25,16 +25,16 @@ public class FastCollinearPoints{
 
             int x = 1;
             while(x < points.length){
-                LinkedList<Point> candidates = new LinkedList<>();
+                LinkedList<Point> clusterPoints = new LinkedList<>();
                 double slopeRef = p.slopeTo(pointsBySlope[x]);
 
                 do {
-                    candidates.add(pointsBySlope[x++]);
+                    clusterPoints.add(pointsBySlope[x++]);
                 } while (x < points.length && p.slopeTo(pointsBySlope[x]) == slopeRef);
 
-                if (candidates.size() >= 3 && p.compareTo(candidates.peek()) < 0) {
+                if (clusterPoints.size() >= 3 && p.compareTo(clusterPoints.peek()) < 0) {
                     Point min = p;
-                    Point max = candidates.removeLast();
+                    Point max = clusterPoints.removeLast();
                     maxLineSegments.add(new LineSegment(min, max));
                 }
             }
