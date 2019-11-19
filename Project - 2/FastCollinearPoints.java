@@ -13,7 +13,9 @@ public class FastCollinearPoints{
         checkNull(points);
         Point[] sortedPoints = points.clone();
         Arrays.sort(sortedPoints);
-        checkDuplicate(points);
+        if(checkDuplicate(points)){
+            throw new IllegalArgumentException();
+        }
         List<LineSegment> maxLineSegments = new LinkedList<>();
 
         for (int i = 0; i < points.length; i++) {
@@ -51,12 +53,15 @@ public class FastCollinearPoints{
         }
     }
 
-    private void checkDuplicate(Point[] points) {
+    private boolean checkDuplicate(Point[] points) {
         for (int i = 0; i < points.length - 1; i++) {
-            if (points[i].compareTo(points[i + 1]) == 0) {
-                throw new IllegalArgumentException();
+            for (int j = i + 1; j < points.length; j++) {
+                if (points[i].compareTo(points[j]) == 0) {
+                    return true;
+                }
             }
         }
+        return false;
     }
 
     public int numberOfSegments(){
