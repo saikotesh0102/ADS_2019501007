@@ -39,15 +39,13 @@ public class BinarySearchST<Key extends Comparable<Key>, Value>{
             return;
         }
 
-        // if(keys[size].compareTo(key) < 0){
-        //     size++;
-        //     keys[size] = key;
-        //     values[size] = value;
-        //     // size++;
-        //     return;
-        // }
-
         int rank = rank(key);
+
+        if (size != 0 && keys[size - 1].compareTo(key) < 0) {
+            keys[size] = key;
+            values[size] = value;
+            size++;
+        }
 
         if (rank < size && keys[rank].compareTo(key) == 0) {
             values[rank] = value;
