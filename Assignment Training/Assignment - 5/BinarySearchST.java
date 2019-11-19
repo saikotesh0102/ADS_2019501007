@@ -41,6 +41,10 @@ public class BinarySearchST<Key extends Comparable<Key>, Value>{
 
         int rank = rank(key);
 
+        if (size == keys.length) {
+            resize();
+        }
+
         if (size != 0 && keys[size - 1].compareTo(key) < 0) {
             keys[size] = key;
             values[size] = value;
@@ -50,10 +54,6 @@ public class BinarySearchST<Key extends Comparable<Key>, Value>{
         if (rank < size && keys[rank].compareTo(key) == 0) {
             values[rank] = value;
             return;
-        }
-
-        if (size == keys.length) {
-            resize();
         }
 
         for (int j = size; j > rank; j--) {
@@ -155,7 +155,8 @@ public class BinarySearchST<Key extends Comparable<Key>, Value>{
     public static void main(String[] args) {
         BinarySearchST<String,Integer> BSST = new BinarySearchST<>();
         BSST.put("Sai", 1);
-        BSST.put("Kotesh", 1);
+        BSST.put("Kotesh", 21);
+        BSST.put("Virat",18);
         System.out.println(Arrays.toString(BSST.keys));
     }
 }
