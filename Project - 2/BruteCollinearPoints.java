@@ -23,7 +23,7 @@ public class BruteCollinearPoints{
                 for (int k = j + 1; k < this.points.length; k++) {
                     for (int l = k + 1; l < this.points.length; l++) {
                         if(this.points[i].slopeTo(this.points[j]) == this.points[j].slopeTo(this.points[k]) && this.points[j].slopeTo(this.points[k]) == this.points[k].slopeTo(this.points[l])){
-                            add(new LineSegment(this.points[i],this.points[j]));
+                            add(new LineSegment(this.points[i],this.points[l]));
                             this.points[i].drawTo(this.points[l]);
                             StdDraw.show();
                         }
