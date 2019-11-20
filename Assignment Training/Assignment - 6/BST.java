@@ -293,21 +293,43 @@ public class BST<Key extends Comparable<Key>, Value>{
         } 
         return ceiling(x.right, key); 
     }
-
-    public boolean isBST(){
-        return isBST(root,null,null);
+    /**
+     * 
+     * @param min
+     * @param max
+     * @return
+     */
+    public boolean isOrdered(Key min, Key max){
+        if(max() == max && min() == min){
+            return isOrdered(root,min,max);
+        }
+        return false;
     }
 
-    private boolean isBST(Node x, Key min, Key max){
+    private boolean isOrdered(Node x, Key min, Key max){
         if (x == null){
             return true;
         }
-        if (min != null && x.key.compareTo(min) <= 0){
+        if (min != null && x.key.compareTo(min) < 0){
             return false;
         }
-        if (max != null && x.key.compareTo(max) >= 0){
+        if (max != null && x.key.compareTo(max) > 0){
             return false;
         }
-        return isBST(x.left, min, x.key) && isBST(x.right, x.key, max);
+        return isOrdered(x.left, min, x.key) && isOrdered(x.right, x.key, max);
+    }
+
+    public static void main(String[] args) {
+        BST<Integer,Integer> bst = new BST<>();
+        bst.put(6,10);
+        bst.put(11,8);
+        bst.put(4,5);
+        bst.put(1,9);
+        bst.put(5,12);
+        bst.put(10,8);
+        bst.put(13,7);
+        System.out.println(bst.isOrdered(1,13));
+        System.out.println(bst.isOrdered(8,13));
+        System.out.println(bst.isOrdered(1,1));
     }
 }
