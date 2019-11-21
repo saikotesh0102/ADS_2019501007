@@ -70,7 +70,7 @@ public class LinearProbingHashST<Key extends Comparable<Key>, Value>{
     }
     /**
      * delete method deletes the particular key from the list
-     * Time Complexity : o(N) 
+     * Time Complexity : O(N) 
      * @param key
      */
     public void delete(Key key) {
