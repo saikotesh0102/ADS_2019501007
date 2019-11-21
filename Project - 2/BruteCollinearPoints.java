@@ -3,12 +3,23 @@
  */
 import java.util.Arrays;
 import edu.princeton.cs.algs4.StdDraw;
-
+/**
+ * This class Implements methods to find the collinear points in a plane,
+ * count of line segments formed and the array to store them.
+ */
 public class BruteCollinearPoints{
     private Point[] points;
     private LineSegment[] lineSegments;
     private int lineSegmentCount;
-
+    /**
+     * Brute Collinear points is used to find the collinear points in a plane
+     * we sort the points in an order by their value.
+     * Iterating from the first to the last, if the slope point i to point j and slope of
+     * point j to point k are equal and slope of point j to point k and slope of point k to
+     * point l are equal then they are collinear.
+     *  
+     * @param points
+     */
     public BruteCollinearPoints(Point[] points){
         checkPoints(points);
 
@@ -32,7 +43,11 @@ public class BruteCollinearPoints{
             }
         }
     }
-
+    /**
+     * add method to add line segment formed to the array
+     * we resize the array when the array is full.
+     * @param line
+     */
     private void add(LineSegment line){
         if(line == null){
             throw new IllegalArgumentException();
@@ -44,7 +59,10 @@ public class BruteCollinearPoints{
 
         this.lineSegments[this.lineSegmentCount++] = line;
     }
-
+    /**
+     * Resize method to resize the array 
+     * @param capacity
+     */
     private void resize(int capacity){
         assert capacity >= this.lineSegmentCount;
 
@@ -52,7 +70,7 @@ public class BruteCollinearPoints{
         System.arraycopy(this.lineSegments, 0, temp, 0, this.lineSegmentCount);
         this.lineSegments = temp;
     }
-
+    
     private void checkPoints(Point[] points){
         if(points == null){
             throw new IllegalArgumentException();
