@@ -5,10 +5,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.LinkedList;
 import edu.princeton.cs.algs4.StdDraw;
-
+/**
+ * Fast Collinear points class implements the same as the Brute Collinear Points
+ * we sort the points based on the slope and find if the points are collinear or not.
+ */
 public class FastCollinearPoints{
     private LineSegment[] lineSegments;
-
+    /**
+     * Method to sort the points based on their value.
+     * Take the Initial point as reference and sort the points based on the slope.
+     * @param points
+     */
     public FastCollinearPoints(Point[] points){
         checkNull(points);
         Point[] sortedPoints = points.clone();
@@ -41,7 +48,11 @@ public class FastCollinearPoints{
         }
         lineSegments = maxLineSegments.toArray(new LineSegment[0]);
     }
-
+    /**
+     * Method to check whether the points are null or not
+     * if null throw an illegal argument exception
+     * @param points
+     */
     private void checkNull(Point[] points) {
         if (points == null) {
             throw new IllegalArgumentException();
@@ -52,7 +63,11 @@ public class FastCollinearPoints{
             }
         }
     }
-
+    /**
+     * mrthod to check whether there are duplicate elements or not
+     * @param points
+     * @return true if there are.
+     */
     private boolean checkDuplicate(Point[] points) {
         for (int i = 0; i < points.length - 1; i++) {
             for (int j = i + 1; j < points.length; j++) {
@@ -63,11 +78,17 @@ public class FastCollinearPoints{
         }
         return false;
     }
-
+    /**
+     * method to count the number of line segments
+     * @return the count
+     */
     public int numberOfSegments(){
         return lineSegments.length;
     }
-
+    /**
+     * Method to find the line segments formed
+     * @return the Line segments.
+     */
     public LineSegment[] segments(){
         return lineSegments.clone();
     }

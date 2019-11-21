@@ -70,7 +70,11 @@ public class BruteCollinearPoints{
         System.arraycopy(this.lineSegments, 0, temp, 0, this.lineSegmentCount);
         this.lineSegments = temp;
     }
-    
+    /**
+     * Method to check whether the points are null or not
+     * If null throw an illegal argument exception.
+     * @param points
+     */
     private void checkPoints(Point[] points){
         if(points == null){
             throw new IllegalArgumentException();
@@ -88,11 +92,16 @@ public class BruteCollinearPoints{
             }
         }
     }
-
+    /**
+     * Method to count the number of Line segments
+     * @return the count
+     */
     public int numberOfSegments(){
         return this.lineSegmentCount;
     }
-
+    /**
+     * @return the Line Segments formed.
+     */
     public LineSegment[] segments(){
         return Arrays.copyOf(this.lineSegments, this.lineSegmentCount);
     }
