@@ -135,9 +135,17 @@ public class LinearProbingHashST<Key extends Comparable<Key>, Value>{
 
     public static void main(String[] args) { 
         LinearProbingHashST<String, Integer> st = new LinearProbingHashST<String, Integer>();
-        st.put("Sai",1);
-        System.out.println(st.get("Sai"));
-        st.put("Kotesh",3);
-        System.out.println(st.get("Kotesh"));
+        int[] arr = new int[1000000];
+        for (int i = 0; i < arr.length; i = i + 3) {
+            st.put("" + i, i * 2);
+        }
+        int count = 0;
+        Object[] ar= st.keys;
+        for(int i = 0; i < arr.length; i = i + 100){
+            if(ar[i] != null){
+                count++;
+            }
+        }
+        System.out.println(count/1000000.0);
     }
 }
